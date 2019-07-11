@@ -1,0 +1,18 @@
+<div class="contaner">
+  <div class="contaner__header">
+    <div class="contaner__header__title">みにあぷり</div>
+    <a href='/users/sign_in'><div class="contaner__header__sign-in">さいんいん</div></a>
+    <a href='/users/sign_up'><div class="contaner__header__sign-up">さいんあっぷ</div></a>
+  </div>
+  <div class="contaner__body">
+    <div class="contaner__body__box">
+      <div class="contaner__body__box__comment">
+        <%= form_for([@user,@comment]) do |f|%>
+          <%= f.text_field :comment, id:"form-text" , value:'' %>
+          <%= f.submit "そうしん", id:"form-submit"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="contaner__footer"></div>
+</div>

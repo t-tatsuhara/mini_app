@@ -1,0 +1,28 @@
+<div class="contaner">
+  <div class="contaner__header">
+    <div class="contaner__header__title">みにあぷり</div>
+    <a href='/comments/new'><div class="contaner__header__sign-in">にゅーこめんと</div></a>
+    <div class="contaner__header__sign-up"><%= link_to 'さいんあうと', destroy_user_session_path, method: :delete %></div>
+    
+  </div>
+  <div class="contaner__body">
+  <% @comments.each do |comment| %>
+    <div class="contaner__body__box">
+      <div class="contaner__body__box__comment"><%= comment[:comment] %></div>
+      <% if user_signed_in? && current_user.id == comment.user.id%>
+        <div class="contaner__body__box__edit">
+        <%= form_tag edit_comment_path(comment[:id]),method: :get do %>
+        <%= submit_tag "へんしゅう" %>
+        <% end %>
+        </div>
+        <div class="contaner__body__box__delete">
+        <%= form_tag comment_path(comment[:id]),method: :delete do %>
+        <%= submit_tag "さくじょ" %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="contaner__footer"><%= paginate @comments%></div>
+</div>
